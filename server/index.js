@@ -26,3 +26,5 @@ app.use(session({
 }))
 
 app.post('/auth/register', authCtrl.register)
+
+app.post('/auth/logout', authCtrl.logout)

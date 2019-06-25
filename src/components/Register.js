@@ -2,10 +2,10 @@ import React, {Component} from 'react'
 import axios from 'axios'
 import {Link, Redirect} from 'react-router-dom'
 import {connect} from 'react-redux'
-import {updateUser} from './../redux/authReducer'
+import {updateUser} from '../redux/reducers/authReducer'
 
 
-export default class Register extends Component {
+class Register extends Component {
     constructor(){
         super();
 
@@ -22,7 +22,8 @@ export default class Register extends Component {
         });
     }
 
-    register() {
+    register = (e) => {
+        e.preventDefault()
         const {name, email, password} = this.state
 
         axios
@@ -31,9 +32,9 @@ export default class Register extends Component {
                 this.props.updateUser(res.data);
                 this.props.history.push('/')
             })
-            .catch(error => {
-                alert('Existing user. Please log in!')
-            })
+            // .catch(error => {
+            //     alert('Existing user. Please log in!')
+            // })
     }
 
     render(){
@@ -42,15 +43,41 @@ export default class Register extends Component {
         }
         return(
             <div>
+                <form>
                 <h1>Register</h1>
                 <input
                     type='text'
                     placeholder='Name'
                     name='name'
-                    onChange=
-                    value=
-
+                    onChange={this.handleInput}
+                    value={this.state.name}
+                />
+                <input
+                    type='text'
+                    placeholder='Email'
+                    name='email'
+                    onChange={this.handleInput}
+                    value={this.state.email}
+                />
+                <input
+                    type='password'
+                    placeholder='Password'
+                    name='password'
+                    onChange={this.handleInput}
+                    value={this.state.password}
+                />
+                <button onClick={this.register}>Register</button>
+                </form>
             </div>
         );
     }
 }
+
+// function mapStateToProps(state) {
+//     return {
+//         id: state.authReducer.id
+//     }
+// }
+
+
+export default connect(state => state, {updateUser})(Register)
