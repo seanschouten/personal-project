@@ -1,0 +1,25 @@
+import React from 'react'
+import {Switch, Route} from 'react-router-dom'
+import Home from './components/Home'
+import Cities from './components/Cities'
+import About from './components/About'
+import Register from './components/Register'
+import Favorites from './components/Favorites'
+import Admin from './components/Admin'
+import Owner from './components/Owner'
+import Account from './components/Account'
+import Login from './components/Login'
+
+export default(
+    <Switch>
+        <Route component={Home} exact path='/' />
+        <Route component={Cities} path='/cities' />
+        <Route component={About} path='/about' />
+        <Route component={Register} path='/register' />
+        <Route component={Favorites} path='/favorites' />
+        <Route component={Admin} path='/admin' />
+        <Route component={Owner} path='/owner' />
+        <Route component={Account} path='/account' />
+        <Route component={Login} path='/login' />
+    </Switch>
+)
