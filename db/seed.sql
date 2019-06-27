@@ -1,4 +1,4 @@
-CREATE TABLE users (
+nameCREATE TABLE users (
     user_id SERIAL PRIMARY KEY,
     name VARCHAR,
     password VARCHAR,

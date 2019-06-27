@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import axios from 'axios'
-import {Link, Redirect} from 'react-router-dom'
+import {Redirect} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {updateUser} from '../redux/reducers/authReducer'
 
@@ -32,9 +32,9 @@ class Register extends Component {
                 this.props.updateUser(res.data);
                 this.props.history.push('/')
             })
-            // .catch(error => {
-            //     alert('Existing user. Please log in!')
-            // })
+            .catch(error => {
+                alert('Existing user. Please log in!')
+            })
     }
 
     render(){

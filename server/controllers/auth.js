@@ -37,7 +37,7 @@ module.exports = {
             const db = req.app.get('db')
             const {email, password} = req.body
 
-            let users = await db.findUserByEmail(email)
+            let users = await db.auth.findUserByEmail(email)
             let user = users[0]
 
             if(!user) {
