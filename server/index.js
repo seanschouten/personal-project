@@ -4,6 +4,7 @@ const session = require('express-session')
 require('dotenv/config')
 
 const authCtrl = require('./controllers/auth')
+const cityCtrl = require('./controllers/cityCtrl')
 
 const app = express()
 app.use(express.json())
@@ -30,3 +31,6 @@ app.post('/auth/login', authCtrl.login)
 app.post('/auth/logout', authCtrl.logout)
 
 app.get('/api/about')
+app.get('/api/city', cityCtrl.getBusinessesByCity)
+app.get('/api/cities', cityCtrl.getCities)
+// get all cities endpoint

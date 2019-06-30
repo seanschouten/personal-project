@@ -1,9 +1,21 @@
 import React, {Component} from 'react';
 import routes from './routes'
-import {Link} from 'react-router-dom'
+import {Link, withRouter} from 'react-router-dom'
+import axios from 'axios'
+import {connect} from 'react-redux'
+import {clearUser} from './redux/reducers/authReducer'
 
-export default class App extends Component {
+class App extends Component {
+
+  logout = () => {
+    axios.post('auth/logout').then(res => {
+       this.props.clearUser()
+       this.props.history.push('/cities')
+    })
+};
+
   render() {
+    console.log(this.props)
     return (
         <div>
           <header>
@@ -20,3 +32,5 @@ export default class App extends Component {
 
   };
 }
+
+export default withRouter(connect(null, {clearUser})(App))

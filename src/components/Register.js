@@ -30,7 +30,7 @@ class Register extends Component {
             .post('/auth/register', {name, email, password})
             .then(res => {
                 this.props.updateUser(res.data);
-                this.props.history.push('/')
+                this.props.history.push('/cities')
             })
             .catch(error => {
                 alert('Existing user. Please log in!')
