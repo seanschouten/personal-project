@@ -2,7 +2,6 @@ const bcrypt = require('bcryptjs')
 
 module.exports = {
     register: async (req, res) => {
-        console.log('Register hit', req.body)
         try {
             const db = req.app.get('db')
             const {name, password, email} = req.body
@@ -65,7 +64,7 @@ module.exports = {
         res.status(200).send('Logged Out')
     },
 
-    currentuser: (req, res) => {
+    currentUser: (req, res) => {
         res.send(req.session.user)
     }
 }

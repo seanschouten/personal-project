@@ -10,7 +10,7 @@ class Login extends Component {
 
         this.state = {
             email:'',
-            password:''
+            password:'',
         };
     }
 
@@ -28,6 +28,7 @@ class Login extends Component {
             .then(res => {
                 this.props.updateUser(res.data);
                 this.props.history.push('/cities');
+            
             // }).catch()
     })
 
@@ -39,7 +40,7 @@ class Login extends Component {
 
     render() {
         if(this.props.id) {
-            return <Redirect to = '/' />
+            return <h1>Welcome</h1> 
         }
         return(
             <div>
@@ -60,6 +61,7 @@ class Login extends Component {
             />
             <button onClick={() => this.login()}>Login</button>
             </div>
+            
         )
     }
 }

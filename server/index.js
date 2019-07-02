@@ -5,6 +5,7 @@ require('dotenv/config')
 
 const authCtrl = require('./controllers/auth')
 const cityCtrl = require('./controllers/cityCtrl')
+const businessCtrl = require('./controllers/businessCtrl')
 
 const app = express()
 app.use(express.json())
@@ -29,6 +30,8 @@ app.use(session({
 app.post('/auth/register', authCtrl.register)
 app.post('/auth/login', authCtrl.login)
 app.post('/auth/logout', authCtrl.logout)
+// app.post('/auth/createBusiness')
+app.get('/auth/currentUser', authCtrl.currentUser)
 
 app.get('/api/about')
 app.get('/api/city', cityCtrl.getBusinessesByCity)

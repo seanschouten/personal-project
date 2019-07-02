@@ -3,9 +3,19 @@ import routes from './routes'
 import {Link, withRouter} from 'react-router-dom'
 import axios from 'axios'
 import {connect} from 'react-redux'
-import {clearUser} from './redux/reducers/authReducer'
+import {clearUser, updateUser} from './redux/reducers/authReducer'
 
 class App extends Component {
+componentDidMount() {
+  axios.get('/auth/currentUser').then((user) => {
+    this.props.updateUser(user.data)
+  })
+};
+
+
+  
+
+
 
   logout = () => {
     axios.post('auth/logout').then(res => {
@@ -21,9 +31,15 @@ class App extends Component {
           <header>
             <div>Pride Pages</div>
               <Link to='/about'>About</Link>
-              <Link to='/login'>Login</Link>
-              <Link to='/register'>Register</Link>
-              <button onClick={this.logout}>Logout</button>
+                {   !this.props.user ?      
+                    <><Link to='/login'>Login</Link>
+                    <Link to='/register'>Register</Link></> : 
+                    <div>
+                      Welcome, {this.props.user.toUpperCase()}
+                      <button onClick={this.logout}>Logout</button>
+                    </div>
+                }
+                <Link to='/account'>Account</Link>
           </header>
           {routes}
         </div>
@@ -33,4 +49,10 @@ class App extends Component {
   };
 }
 
-export default withRouter(connect(null, {clearUser})(App))
+let mapStateToProps = state => {
+  return{
+    user: state.authReducer.name
+  }
+}
+
+export default withRouter(connect(mapStateToProps, {clearUser, updateUser})(App))

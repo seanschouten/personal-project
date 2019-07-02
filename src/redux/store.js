@@ -7,6 +7,5 @@ const store = createStore(
     combineReducers({authReducer})
 )
 
-// export default createStore(reducer)
 
 export default store;

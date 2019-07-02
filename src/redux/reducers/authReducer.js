@@ -23,8 +23,8 @@ export function clearUser() {
 export default function authReducer(state = initialState, action) {
     switch(action.type) {
         case UPDATE_USER:
-            const {email, user_id} = action.payload;
-            return {...state, email, id:user_id}
+            const {email, user_id, name} = action.payload;
+            return {...state, email, id:user_id, name}
         case CLEAR_USER:
             return {...state, ...initialState};
         default:
