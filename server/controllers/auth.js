@@ -5,7 +5,6 @@ module.exports = {
         try {
             const db = req.app.get('db')
             const {name, password, email} = req.body
-            // const {session} = req
 
             let users = db.auth.findUserByEmail(email)
             let user = users[0]

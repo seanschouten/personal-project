@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import routes from './routes'
-import {Link, withRouter} from 'react-router-dom'
+import {Link, withRouter, Redirect} from 'react-router-dom'
 import axios from 'axios'
 import {connect} from 'react-redux'
 import {clearUser, updateUser} from './redux/reducers/authReducer'
@@ -25,7 +25,9 @@ componentDidMount() {
 };
 
   render() {
-    console.log(this.props)
+    // if(this.props.user) {
+    //   return <Redirect to='' />
+    // }
     return (
         <div>
           <header>
@@ -37,9 +39,10 @@ componentDidMount() {
                     <div>
                       Welcome, {this.props.user.toUpperCase()}
                       <button onClick={this.logout}>Logout</button>
+                      <Link to='/account'>Account</Link>
                     </div>
                 }
-                <Link to='/account'>Account</Link>
+                
           </header>
           {routes}
         </div>

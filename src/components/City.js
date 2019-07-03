@@ -15,7 +15,6 @@ export default class City extends Component {
 
     componentDidMount() {
         axios.get(`/api/city?city=${this.props.match.params.city}`).then(res => {
-            console.log(res.data)
             this.setState({
                 businesses: res.data
             });
@@ -26,7 +25,6 @@ export default class City extends Component {
 
 
     render(){
-        console.log(this.props.match.params.city)
         const mappedBusinesses = this.state.businesses.map((business) => {
             return(
                 <div key={business.business_id}>

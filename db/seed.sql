@@ -10,6 +10,7 @@ CREATE TABLE businesses (
     name VARCHAR,
     city VARCHAR,
     address VARCHAR,
+    description VARCHAR(240),
     owner_id INTEGER REFERENCES users(user_id)
 );
 

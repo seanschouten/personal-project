@@ -7,9 +7,10 @@ import Register from './components/Register'
 import Favorites from './components/Favorites'
 import Admin from './components/Admin'
 import Owner from './components/Owner'
-import Account from './components/Account'
+import Account from './components/Account/Account'
 import Login from './components/Login'
 import City from './components/City'
+import CreateBusiness from './components/Account/CreateBusiness'
 
 export default(
     <Switch>
@@ -21,7 +22,8 @@ export default(
         <Route component={Favorites} path='/favorites' />
         <Route component={Admin} path='/admin' />
         <Route component={Owner} path='/owner' />
-        <Route component={Account} path='/account' />
+        <Route component={Account} exact path='/account' />
+        <Route component={CreateBusiness} path ='/account/createBusiness' />
         <Route component={Login} path='/login' />
     </Switch>
 )

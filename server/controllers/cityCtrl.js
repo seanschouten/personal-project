@@ -1,7 +1,6 @@
 module.exports = {
 // get cities method
 // make database available 
-// make SQL call select distinct city from businesses (put this in SQL)
 
     getCities: async (req, res) => {
         try {
@@ -18,7 +17,6 @@ module.exports = {
     getBusinessesByCity: async (req, res) => {
         try {
             let db = req.app.get('db')
-            console.log(req.query)
             let city = req.query.city
             let businesses = await db.getBusinessByCity({city})
             res.send(businesses)

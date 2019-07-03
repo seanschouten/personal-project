@@ -10,6 +10,16 @@ const businessCtrl = require('./controllers/businessCtrl')
 const app = express()
 app.use(express.json())
 
+// CODE THIS OUT ONCE APP IS BUILT 
+app.use((req, res, next) => {
+    const {email, password} = req.body
+    if(!email && !password){
+        req.body.email = 'sean@sean.com'
+        req.body.password = 'password'
+    }
+    next()
+})
+
 const { SERVER_PORT, SESSION_SECRET, CONNECTION_STRING } = process.env
 
 massive(CONNECTION_STRING).then(db => {
@@ -30,10 +40,10 @@ app.use(session({
 app.post('/auth/register', authCtrl.register)
 app.post('/auth/login', authCtrl.login)
 app.post('/auth/logout', authCtrl.logout)
-// app.post('/auth/createBusiness')
-app.get('/auth/currentUser', authCtrl.currentUser)
+app.post('/auth/createBusiness', businessCtrl.create)
 
+app.get('/auth/currentUser', authCtrl.currentUser)
+app.get('/auth/user/businesses', businessCtrl.read)
 app.get('/api/about')
 app.get('/api/city', cityCtrl.getBusinessesByCity)
 app.get('/api/cities', cityCtrl.getCities)
-// get all cities endpoint
