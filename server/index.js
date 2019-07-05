@@ -43,7 +43,11 @@ app.post('/auth/logout', authCtrl.logout)
 app.post('/auth/createBusiness', businessCtrl.create)
 
 app.get('/auth/currentUser', authCtrl.currentUser)
-app.get('/auth/user/businesses', businessCtrl.read)
+app.get('/api/user/businesses', businessCtrl.read)
 app.get('/api/about')
 app.get('/api/city', cityCtrl.getBusinessesByCity)
 app.get('/api/cities', cityCtrl.getCities)
+
+app.delete('/api/user/delete/:id', businessCtrl.delete)
+
+app.put('/api/user/update/:id', businessCtrl.update)

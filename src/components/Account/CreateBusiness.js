@@ -31,6 +31,7 @@ export default class CreateBusiness extends Component {
     }
 
     render(){
+        console.log(this.state.city)
         return(
             <div>
                 <h1>Register Your Business!</h1>
@@ -66,7 +67,7 @@ export default class CreateBusiness extends Component {
                     type='submit'
                     onClick={this.register}
                 />
-
+                
 
             </div>
         )
