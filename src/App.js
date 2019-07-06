@@ -1,9 +1,30 @@
 import React, {Component} from 'react';
+import './App.css'
 import routes from './routes'
 import {Link, withRouter, Redirect} from 'react-router-dom'
 import axios from 'axios'
 import {connect} from 'react-redux'
 import {clearUser, updateUser} from './redux/reducers/authReducer'
+import styled from 'styled-components'
+
+const StyledNav = styled.nav`
+  background-color: #353C50;
+  color: white;
+  height: 100vh
+`
+
+const StyledHeader = styled.header`
+  background-color: #767D91;
+  border:100px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: baseline;
+  height: 10vh
+`
+const StyledApp = styled.div`
+
+`
+
 
 class App extends Component {
 componentDidMount() {
@@ -29,9 +50,9 @@ componentDidMount() {
     //   return <Redirect to='' />
     // }
     return (
-        <div>
-          <header>
-            <div>Pride Pages</div>
+        <StyledNav>
+          <StyledHeader>
+            <h4>Pride Pages</h4>
               <Link to='/about'>About</Link>
                 {   !this.props.user ?      
                     <><Link to='/login'>Login</Link>
@@ -43,9 +64,9 @@ componentDidMount() {
                     </div>
                 }
                 
-          </header>
+          </StyledHeader>
           {routes}
-        </div>
+        </StyledNav>
       
     )
 

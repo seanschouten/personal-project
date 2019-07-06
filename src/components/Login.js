@@ -2,6 +2,25 @@ import React, {Component} from 'react'
 import axios from 'axios'
 import {connect} from 'react-redux'
 import {updateUser} from './../redux/reducers/authReducer'
+import styled from 'styled-components'
+import {Link} from 'react-router-dom'
+
+
+const StyledLogin = styled.div`
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    margin: 50px;
+    padding: 50px;
+    /* background-color: blue; */
+    align-items: center;
+`
+const InputBox = styled.input`
+    margin-bottom: 10.75px;
+    /* border-color: black; */
+    width: 200px;    
+`
+
 
 class Login extends Component {
     constructor(){
@@ -42,16 +61,16 @@ class Login extends Component {
             return <h1>Welcome</h1> 
         }
         return(
-            <div>
+        <StyledLogin>
             <h1>Login</h1>
-            <input
+            <InputBox
                 type='text'
                 placeholder='Email'
                 name='email'
                 onChange={this.handleInput} 
                 value={this.state.email}
             />
-            <input
+            <InputBox
                 type='password'
                 placeholder='Password'
                 name='password'
@@ -59,7 +78,8 @@ class Login extends Component {
                 value={this.state.password}
             />
             <button onClick={() => this.login()}>Login</button>
-            </div>
+            <Link to='/register'>Register Here</Link>
+        </StyledLogin>
             
         )
     }
