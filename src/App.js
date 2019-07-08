@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './App.css'
 import routes from './routes'
-import {Link, withRouter, Redirect} from 'react-router-dom'
+import {Link, withRouter} from 'react-router-dom'
 import axios from 'axios'
 import {connect} from 'react-redux'
 import {clearUser, updateUser} from './redux/reducers/authReducer'
@@ -19,11 +19,11 @@ const StyledHeader = styled.header`
   display: flex;
   justify-content: space-evenly;
   align-items: baseline;
-  height: 10vh
+  height: 10vh;
 `
-const StyledApp = styled.div`
+/* const StyledApp = styled.div`
 
-`
+` */
 
 
 class App extends Component {
@@ -41,7 +41,7 @@ componentDidMount() {
   logout = () => {
     axios.post('auth/logout').then(res => {
        this.props.clearUser()
-       this.props.history.push('/cities')
+       this.props.history.push('/')
     })
 };
 

@@ -10,6 +10,8 @@ const businessCtrl = require('./controllers/businessCtrl')
 const app = express()
 app.use(express.json())
 
+app.use( express.static( `${__dirname}/../build` ) );
+
 // CODE THIS OUT ONCE APP IS BUILT 
 app.use((req, res, next) => {
     const {email, password} = req.body

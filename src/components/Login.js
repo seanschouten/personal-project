@@ -45,7 +45,7 @@ class Login extends Component {
             .post('/auth/login', {email, password})
             .then(res => {
                 this.props.updateUser(res.data);
-                this.props.history.push('/cities');
+                this.props.history.push('/');
             
             // }).catch()
     })
